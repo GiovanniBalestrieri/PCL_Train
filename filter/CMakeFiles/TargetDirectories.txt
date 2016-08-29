@@ -1,3 +1,0 @@
-/home/userk/development/github/PCL/filter/CMakeFiles/rebuild_cache.dir
-/home/userk/development/github/PCL/filter/CMakeFiles/edit_cache.dir
-/home/userk/development/github/PCL/filter/CMakeFiles/passthrough.dir
