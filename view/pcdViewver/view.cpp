@@ -25,7 +25,7 @@ viewerPsycho (pcl::visualization::PCLVisualizer& viewer)
     std::stringstream ss;
     ss << "Once per viewer loop: " << count++;
     viewer.removeShape ("text", 0);
-    viewer.addText (ss.str(), 200, 300, "text", 0);
+    viewer.addText (ss.str(), 50, 400, "text", 0);
     
     //FIXME: possible race condition here:
     user_data++;
@@ -34,6 +34,21 @@ viewerPsycho (pcl::visualization::PCLVisualizer& viewer)
 int 
 main ()
 {
+  pcl::PointCloud<pcl::PointXYZ> cloud1;
+
+  // Fill in the cloud data
+  cloud1.width    = 100000;
+  cloud1.height   = 1;
+  cloud1.is_dense = false;
+  cloud1.points.resize (cloud1.width * cloud1.height);
+
+  for (size_t i = 0; i < cloud1.points.size (); ++i)
+  {
+    cloud1.points[i].x = 1024 * rand () / (RAND_MAX + 1.0f);
+    cloud1.points[i].y = 1024 * rand () / (RAND_MAX + 1.0f);
+    cloud1.points[i].z = 1024 * rand () / (RAND_MAX + 1.0f);
+  }
+
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
     pcl::io::loadPCDFile ("table_scene_lms400.pcd", *cloud);
     
