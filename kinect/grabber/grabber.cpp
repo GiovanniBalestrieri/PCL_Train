@@ -1,7 +1,7 @@
 #include <pcl/io/openni_grabber.h>
-#include <pcl/point_cloud.h>
-#include <pcl/point_types.h>
 #include <pcl/visualization/cloud_viewer.h>
+
+
 
  class SimpleOpenNIViewer
  {
@@ -10,8 +10,18 @@
 
      void cloud_cb_ (const pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr &cloud)
      {
+	//pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered( new pcl::PointCloud<pcl::PointXYZ>);
+	//pcl::PCLPointCloudConstPtr cloudPtr(cloud1);
+	//pcl_conversions::toPCL(*cloud,*cloud1)
+	//pcl::VoxelGrid<pcl::PointXYZ> sor;
+	//sor.setInputCloud (cloud);
+	//sor.setLeafSize (0.01f, 0.01f, 0.01f);
+	//sor.filter (*cloud_filtered);
+
        if (!viewer.wasStopped())
-         viewer.showCloud (cloud);
+       {  // Create the filtering object
+ 	viewer.showCloud (cloud);
+	}
      }
 
      void run ()

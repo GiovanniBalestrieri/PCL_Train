@@ -9,10 +9,6 @@
 /home/userk/development/github/PCL_Train/kinect/grabber/grabber.cpp
 pcl/io/openni_grabber.h
 -
-pcl/point_cloud.h
--
-pcl/point_types.h
--
 pcl/visualization/cloud_viewer.h
 -
 

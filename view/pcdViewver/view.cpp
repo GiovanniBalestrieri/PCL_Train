@@ -8,13 +8,13 @@ int user_data;
 void 
 viewerOneOff (pcl::visualization::PCLVisualizer& viewer)
 {
-    viewer.setBackgroundColor (1.0, 0.5, 1.0);
+    viewer.setBackgroundColor (1.0, 0.5, 0.7);
     pcl::PointXYZ o;
     o.x = 1.0;
     o.y = 0;
     o.z = 0;
-    viewer.addSphere (o, 0.25, "sphere", 0);
-    std::cout << "i only run once" << std::endl;
+    viewer.addSphere (o, 0.5, "sphere", 0);
+    std::cout << "Added Sphere" << std::endl;
     
 }
     
@@ -32,7 +32,7 @@ viewerPsycho (pcl::visualization::PCLVisualizer& viewer)
 }
     
 int 
-main ()
+main(int argc, char** argv)
 {
   pcl::PointCloud<pcl::PointXYZ> cloud1;
 
@@ -49,8 +49,8 @@ main ()
     cloud1.points[i].z = 1024 * rand () / (RAND_MAX + 1.0f);
   }
 
-    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
-    pcl::io::loadPCDFile ("table_scene_lms400.pcd", *cloud);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::io::loadPCDFile ("foto.pcd", *cloud);
     
     pcl::visualization::CloudViewer viewer("Cloud Viewer");
     
