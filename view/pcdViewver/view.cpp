@@ -35,7 +35,7 @@ int
 main(int argc, char** argv)
 {
   pcl::PointCloud<pcl::PointXYZ> cloud1;
-
+  pcl::PCDReader reader;
   // Fill in the cloud data
   cloud1.width    = 100000;
   cloud1.height   = 1;
@@ -50,8 +50,8 @@ main(int argc, char** argv)
   }
 
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::io::loadPCDFile ("foto.pcd", *cloud);
-    
+//    pcl::io::loadPCDFile ("foto.pcd", *cloud);
+    reader.read("foto.pcd",*cloud);
     pcl::visualization::CloudViewer viewer("Cloud Viewer");
     
     //blocks until the cloud is actually rendered

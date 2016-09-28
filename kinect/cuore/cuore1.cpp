@@ -1,9 +1,12 @@
 #include <iostream>
 #include <pcl/io/pcd_io.h>
+#include <pcl/filters/voxel_grid.h>
 #include <pcl/io/openni_grabber.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <pcl/point_types.h>
 #include <pcl/filters/passthrough.h>
+
+bool filterPass = false;
 
 void showHelp()
 {
@@ -20,17 +23,29 @@ class SimpleOpenNIViewer
      {
 
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
-	// Create the filtering object
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud (cloud);
-        pass.setFilterFieldName ("z");
-        pass.setFilterLimits (0.0, 1.0);
-        //pass.setFilterLimitsNegative (true);
-        pass.filter (*cloud_filtered);
-        
+	
+	if (filterPass)
+	{
+		// Create the filtering object
+	        pcl::PassThrough<pcl::PointXYZ> pass;
+	        pass.setInputCloud (cloud);
+	        pass.setFilterFieldName ("z");
+	        pass.setFilterLimits (0.0, 1.4);
+	        //pass.setFilterLimitsNegative (true);
+	        pass.filter (*cloud_filtered);
+        }
+
 	if (!viewer.wasStopped())
-          viewer.showCloud (cloud);
-	  pcl::io::savePCDFileASCII( "foto.pcd" , *cloud );
+	{
+	  pcl::VoxelGrid<pcl::PointCloud2> sor;
+	  sor.setInputCloud (cloud);
+          sor.setLeafSize (0.01f, 0.01f, 0.01f);
+          sor.filter (*cloud_filtered);
+     
+          viewer.showCloud (cloud_filtered);
+	}
+	pcl::PCDWriter writer;
+	  writer.write("foto.pcd",*cloud,false);
 	  std::cerr << "Saved: " << cloud->points.size ()<<" data points.\n";
      }
 

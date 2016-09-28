@@ -387,10 +387,16 @@ CMakeFiles/cuore1.dir/cuore1.cpp.o
  /usr/local/include/pcl-1.8/pcl/PolygonMesh.h
  /usr/local/include/pcl-1.8/pcl/TextureMesh.h
  /usr/local/include/pcl-1.8/pcl/Vertices.h
+ /usr/local/include/pcl-1.8/pcl/cloud_iterator.h
+ /usr/local/include/pcl-1.8/pcl/common/centroid.h
  /usr/local/include/pcl-1.8/pcl/common/colors.h
+ /usr/local/include/pcl-1.8/pcl/common/common.h
  /usr/local/include/pcl-1.8/pcl/common/concatenate.h
  /usr/local/include/pcl-1.8/pcl/common/copy_point.h
  /usr/local/include/pcl-1.8/pcl/common/eigen.h
+ /usr/local/include/pcl-1.8/pcl/common/impl/accumulators.hpp
+ /usr/local/include/pcl-1.8/pcl/common/impl/centroid.hpp
+ /usr/local/include/pcl-1.8/pcl/common/impl/common.hpp
  /usr/local/include/pcl-1.8/pcl/common/impl/copy_point.hpp
  /usr/local/include/pcl-1.8/pcl/common/impl/eigen.hpp
  /usr/local/include/pcl-1.8/pcl/common/impl/io.hpp
@@ -407,9 +413,12 @@ CMakeFiles/cuore1.dir/cuore1.cpp.o
  /usr/local/include/pcl-1.8/pcl/filters/impl/filter.hpp
  /usr/local/include/pcl-1.8/pcl/filters/impl/filter_indices.hpp
  /usr/local/include/pcl-1.8/pcl/filters/impl/passthrough.hpp
+ /usr/local/include/pcl-1.8/pcl/filters/impl/voxel_grid.hpp
  /usr/local/include/pcl-1.8/pcl/filters/passthrough.h
+ /usr/local/include/pcl-1.8/pcl/filters/voxel_grid.h
  /usr/local/include/pcl-1.8/pcl/for_each_type.h
  /usr/local/include/pcl-1.8/pcl/geometry/planar_polygon.h
+ /usr/local/include/pcl-1.8/pcl/impl/cloud_iterator.hpp
  /usr/local/include/pcl-1.8/pcl/impl/pcl_base.hpp
  /usr/local/include/pcl-1.8/pcl/impl/point_types.hpp
  /usr/local/include/pcl-1.8/pcl/io/boost.h
