@@ -1,4 +1,5 @@
 #include <iostream>
+#include <pcl/conversions.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/io/openni_grabber.h>
@@ -19,13 +20,14 @@ class SimpleOpenNIViewer
    public:
      SimpleOpenNIViewer () : viewer ("PCL OpenNI Viewer") {}
 
-     void cloud_cb_ (const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud)
+     void cloud_cb_ (const pcl::PointCloud<pcl::PCLPointCloud2>::ConstPtr &cloud)
      {
 
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PCLPointCloud2>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PCLPointCloud2>);
 	
 	if (filterPass)
 	{
+	/*
 		// Create the filtering object
 	        pcl::PassThrough<pcl::PointXYZ> pass;
 	        pass.setInputCloud (cloud);
@@ -33,11 +35,13 @@ class SimpleOpenNIViewer
 	        pass.setFilterLimits (0.0, 1.4);
 	        //pass.setFilterLimitsNegative (true);
 	        pass.filter (*cloud_filtered);
+	*/
         }
 
 	if (!viewer.wasStopped())
 	{
-	  pcl::VoxelGrid<pcl::PointCloud2> sor;
+	  pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
+	  //pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
 	  sor.setInputCloud (cloud);
           sor.setLeafSize (0.01f, 0.01f, 0.01f);
           sor.filter (*cloud_filtered);
@@ -52,7 +56,7 @@ class SimpleOpenNIViewer
      void run ()
      {
        pcl::Grabber* interface = new pcl::OpenNIGrabber();
-       boost::function<void (const pcl::PointCloud<pcl::PointXYZ>::ConstPtr&)> f =
+       boost::function<void (const pcl::PointCloud::<pcl::PCLPointCloud2>ConstPtr&)> f =
          boost::bind (&SimpleOpenNIViewer::cloud_cb_, this, _1);
 
        interface->registerCallback (f);

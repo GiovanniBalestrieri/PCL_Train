@@ -9,6 +9,8 @@
 /home/userk/development/github/PCL_Train/kinect/cuore/cuore1.cpp
 iostream
 -
+pcl/conversions.h
+-
 pcl/io/pcd_io.h
 -
 pcl/filters/voxel_grid.h
